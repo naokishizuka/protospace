@@ -21,7 +21,7 @@
  - belongs_to :user
  - has_many :images
  - has_many :comments
- - has_many :tags
+ - has_many :tags,through: :proto_tags
  - has_many :likes
 
 - images
@@ -32,7 +32,7 @@
  - belongs_to :proto
 
 - tags
- - has_many :protos
+ - has_many :protos,through: :proto_tags
 
 - likes
  - belongs_to :user
@@ -52,6 +52,7 @@
  - avatar
 
 - protos
+ - title
  - catch_copy
  - concept
  - user_id
