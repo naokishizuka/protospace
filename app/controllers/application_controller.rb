@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up).push(:user_name,:member,:profile,:works,:avatar)
-    devise_parameter_sanitizer.for(:account_update).push(:user_name,:member,:profile,:works,:avatar)
+    devise_parameter_sanitizer.for(:sign_up).push(:user_name, :member, :profile, :works, :avatar)
   end
 end
