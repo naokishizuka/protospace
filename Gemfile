@@ -48,5 +48,6 @@ group :development do
   gem 'devise'
   gem 'carrierwave'
   gem 'rmagick'
+  gem 'pry'
 end
 
