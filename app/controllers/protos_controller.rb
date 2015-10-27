@@ -6,8 +6,8 @@ class ProtosController < ApplicationController
   end
 
   def create
-    proto = Proto.create(create_params)
-    redirect_to controller: "top", action: "index"
+    Proto.create(create_params)
+    redirect_to :root
   end
 
   private
