@@ -46,5 +46,8 @@ group :development do
   gem 'haml-rails'
   gem 'erb2haml'
   gem 'devise'
+  gem 'carrierwave'
+  gem 'rmagick'
+  gem 'pry'
 end
 
