@@ -5,20 +5,19 @@
         Action
       %ul{aria: {labelledby: "dropdownMenu1"}, class: "dropdown-menu"}
         %li
-          =link_to "Delete", proto_path(proto), method: :delete, rel: "nofollow", data:{ method: "delete"}
+          = link_to "Delete", proto_path(proto), method: :delete, rel: "nofollow", data:{ method: "delete"}
         %li
-          =link_to "Edit", edit_proto_path(proto)
+          = link_to "Edit", edit_proto_path(proto)
   .thumbnail
-    %a{href: proto_path(proto.id)}
-      = image_tag( proto.images.main.first.image)
-      .caption
-        %h3
-          =proto.title
-        .proto-meta
-          .proto-date
-            =proto.created_at
-        %ul.proto-tag-list.list-inline
-          %li
-            %a{href: "#", class: "btn btn-default"} iPad
-          %li
-            %a{href: "#", class: "btn btn-default"} wireframe
+    = link_to image_tag(proto.images.main.first.image), proto_path(proto.id)
+    .caption
+      %h3
+        = proto.title
+      .proto-meta
+        .proto-date
+          = proto.created_at
+      %ul.proto-tag-list.list-inline
+        %li
+          %a{href: "#", class: "btn btn-default"} iPad
+        %li
+          %a{href: "#", class: "btn btn-default"} wireframe
