@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def show
+  end
+
   def update
     current_user.update(update_params)
     redirect_to :root

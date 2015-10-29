@@ -6,14 +6,38 @@ class ProtosController < ApplicationController
   end
 
   def create
-    Proto.create(create_params)
+    Proto.create(proto_params)
+    redirect_to :root
+  end
+
+  def show
+    @proto = Proto.find(params[:id])
+  end
+
+  def destroy
+    proto = Proto.find(params[:id])
+    if proto.user.id == current_user.id
+      proto.destroy
+    end
+    redirect_to :root
+  end
+
+  def edit
+    @proto = Proto.find(params[:id])
+  end
+
+  def update
+    proto = Proto.find(params[:id])
+    if proto.user.id == current_user.id
+      proto.update(proto_params)
+    end
     redirect_to :root
   end
 
   private
 
-  def create_params
-    params.require(:proto).permit(:title,:catch_copy,:concept,images_attributes:[:image,:status]).merge(user_id: current_user.id)
+  def proto_params
+    params.require(:proto).permit(:title, :catch_copy, :concept, :user_id, images_attributes:[:id, :image, :status]).merge(user_id: current_user.id)
   end
 
 end
