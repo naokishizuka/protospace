@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @protos = current_user.protos
   end
 
   def update

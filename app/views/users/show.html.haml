@@ -24,7 +24,7 @@
               = current_user.works
 .container.proto-list
   .row
-    = render partial:'protos/proto',collection: current_user.protos
+    = render @protos
 
 .text-center
   %ul.pagination

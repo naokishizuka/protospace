@@ -13,7 +13,7 @@
       %button{type: "button", class: "btn btn-default col-lg-1"} View Tags
 .container.proto-list
   .row
-    = render partial: 'protos/proto',collection: @protos
+    = render @protos
 
 .text-center
   %ul.pagination
