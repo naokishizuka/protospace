@@ -1,5 +1,5 @@
 class TopController < ApplicationController
   def index
-    @protos = Proto.all
+    @prototypes = Prototype.all
   end
 end

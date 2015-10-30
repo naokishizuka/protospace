@@ -1,21 +1,21 @@
 .col-sm-4.col-md-3.proto-content
-  -if user_signed_in? && current_user.id == proto.user.id
+  -if user_signed_in? && current_user.id == prototype.user.id
     .dropdown.drop_menu_location
       %button{data: {toggle: "dropdown"}, id: "dropdownMenu", type: "button"}
         Action
       %ul{aria: {labelledby: "dropdownMenu1"}, class: "dropdown-menu"}
         %li
-          = link_to "Delete", proto_path(proto), method: :delete, rel: "nofollow", data:{ method: "delete"}
+          = link_to "Delete", prototype_path(prototype), method: :delete, rel: "nofollow", data:{ method: "delete"}
         %li
-          = link_to "Edit", edit_proto_path(proto)
+          = link_to "Edit", edit_prototype_path(prototype)
   .thumbnail
-    = link_to image_tag(proto.images.main.first.image), proto_path(proto.id)
+    = link_to image_tag(prototype.images.main.first.image), prototype_path(prototype.id)
     .caption
       %h3
-        = proto.title
+        = prototype.title
       .proto-meta
         .proto-date
-          = proto.created_at
+          = prototype.created_at
       %ul.proto-tag-list.list-inline
         %li
           %a{href: "#", class: "btn btn-default"} iPad
