@@ -11,6 +11,8 @@ class PrototypesController < ApplicationController
 
   def show
     @prototype = Prototype.find(params[:id])
+    @comment = Comment.new
+    @comments = @prototype.comments
   end
 
   def destroy
@@ -32,6 +34,7 @@ class PrototypesController < ApplicationController
     end
     redirect_to :root
   end
+
 
   private
 

@@ -1,0 +1,12 @@
+- if prototype.like_user(current_user)
+  = button_to like_path(prototype_id: prototype), method: :delete, class: "btn btn-default decrement-button" do
+    = image_tag("icon_red_heart.svg")
+    LIKE
+    %span.num
+      = prototype.likes.length
+- else
+  = button_to likes_path(prototype_id: prototype), class: "btn btn-default increment-button" do
+    = image_tag("icon_heart.svg")
+    LIKE
+    %span.num
+      = prototype.likes.length
