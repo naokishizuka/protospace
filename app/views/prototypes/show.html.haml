@@ -45,7 +45,7 @@
         = @prototype.comments.length
     .col-md-8
       #comments
-        = render partial: 'comments/comment',collection: @comments
+        = render @comments
       .form-inline
         = form_for @comment, remote: true do |f|
           %h4 Write a comment
