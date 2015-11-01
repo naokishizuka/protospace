@@ -1,11 +1,18 @@
 class LikesController < ApplicationController
   def create
-    Like.create(user_id: current_user.id, prototype_id: params[:prototype_id])
-    redirect_to :root
+    current_user.likes.create(create_params)
+    @prototype = Prototype.find(params[:prototype_id])
   end
 
   def destroy
-    Like.find_by(user_id: current_user.id, prototype_id: params[:prototype_id]).destroy
-    redirect_to :root
+    Like.find_by(id: params[:id]).destroy
+    @prototype = Prototype.find(params[:prototype_id])
   end
+
+  private
+
+  def create_params
+    params.permit(:prototype_id)
+  end
+
 end
