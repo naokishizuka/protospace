@@ -41,7 +41,7 @@ class PrototypesController < ApplicationController
 
   def newest
     @prototypes = Prototype.order(created_at: :DESC)
-    render action:'index'
+    render action: :index
   end
 
   private
