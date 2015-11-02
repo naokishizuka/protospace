@@ -1,6 +1,6 @@
 class PrototypesController < ApplicationController
   def index
-    @prototypes = Prototype.order("likes_count DESC")
+    @prototypes = Prototype.order(likes_count: :DESC)
   end
 
   def new
@@ -40,7 +40,7 @@ class PrototypesController < ApplicationController
   end
 
   def newest
-    @prototypes = Prototype.order("created_at DESC")
+    @prototypes = Prototype.order(created_at: :DESC)
     render action:'index'
   end
 
