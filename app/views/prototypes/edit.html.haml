@@ -1,5 +1,5 @@
 .container.proto-new
-  = form_for (@proto) do |f|
+  = form_for (@prototype) do |f|
     .col-md-8.col-md-offset-2
       %header.row.user-nav.row
         .col-md-12
@@ -7,19 +7,19 @@
       .row
         .col-md-12
           .cover-image-upload
-            = f.fields_for :images do |image|
+            = f.fields_for :images, @prototype.images.main do |image|
               = image.file_field :image
               = image.hidden_field :status, value: 'main'
         .col-md-12
           %ul.proto-sub-list.list-group
             %li.list-group-item.col-md-4
               .image-upload
-                = f.fields_for :images do |image|
+                = f.fields_for :images, @prototype.images.sub.first do |image|
                   = image.file_field :image
                   = image.hidden_field :status, value: 'sub'
             %li.list-group-item.col-md-4
               .image-upload
-                = f.fields_for :images do |image|
+                = f.fields_for :images, @prototype.images.sub.last do |image|
                   = image.file_field :image
                   = image.hidden_field :status, value: 'sub'
             %li.list-group-item.col-md-4

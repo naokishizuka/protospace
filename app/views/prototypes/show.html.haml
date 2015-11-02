@@ -1,0 +1,58 @@
+.container.proto-page
+  %header.row.user-nav
+    .col-md-6
+      .media
+        .media-left
+          = link_to image_tag(@prototype.user.avatar, alt: "64x64", class: "media-object", style: "width: 64px; height: 64px;", data: {src: "holder.js/64x64"}, data:{ holder: { rendered: "true" } }), user_path(@prototype.user)
+        .media-body
+          %h4#top-aligned-media.media-heading
+            Top aligned media
+          .proto-user
+            = link_to "by #{@prototype.user.user_name}", user_path(@prototype.user)
+            %span.degree
+              = current_user.member
+    .col-md-6.text-right
+      #like-button
+        = render partial: 'likes/like'
+
+  .row
+    .col-md-9
+      = image_tag( @prototype.images.main.first.image, class: 'img-responsive')
+    .col-md-3
+      %ul.proto-sub-list.list-group
+        = render partial: 'sub_image', collection: @prototype.images.sub
+
+  .row.proto-description
+    .col-md-3
+      %h4 Catch Copy
+      %p
+        = @prototype.catch_copy
+    .col-md-6
+      %h4 Concept
+      %p
+        = @prototype.concept
+    .col-md-3
+      %h4 Tag List
+      %ul.proto-tag-list.list-inline
+        %li
+          %a{href: "#", class: "btn btn-default"} iPad
+        %li
+          %a{href: "#", class: "btn btn-default"} wireframe
+  .row.proto-comments
+    %h4.col-md-12
+      Comments
+      %span.num
+        = @prototype.comments.length
+    .col-md-8
+      #comments
+        = render @comments
+      .form-inline
+        = form_for @comment, remote: true do |f|
+          %h4 Write a comment
+          .row
+            .form-group.col-md-10
+              = f.text_area :text, placeholder: "Your comments", rows: "3", id: "comment_text", class: "textform-control"
+              = f.hidden_field :prototype_id, value: @prototype.id
+            .form-group.col-md-2
+              = f.submit "Comment", class: "btn btn-primary"
+

@@ -4,42 +4,42 @@
 
 ##テーブル
 - users
-- protos
+- prototypes
 - images
 - comments
 - tags
 - likes
-- proto_tags
+- prototypes_tags
 
 ##アソシエーション
 - users
- - has_many :protos
+ - has_many :prototypes
  - has_many :comments
  - has_many :likes
 
-- protos
+- prototypes
  - belongs_to :user
  - has_many :images
  - has_many :comments
- - has_many :tags,through: :proto_tags
+ - has_many :tags,through: :prototype_tags
  - has_many :likes
 
 - images
- - belongs_to :proto
+ - belongs_to :prototype
 
 - comments
  - belongs_to :user
- - belongs_to :proto
+ - belongs_to :prototype
 
 - tags
- - has_many :protos,through: :proto_tags
+ - has_many :prototypes,through: :prototype_tags
 
 - likes
  - belongs_to :user
- - belongs_to :proto
+ - belongs_to :prototype
 
-- proto_tags
- - belongs_to :proto
+- tags_prototypes
+ - belongs_to :prototype
  - belongs_to :tag
 
 ##カラム
@@ -51,7 +51,7 @@
  - works
  - avatar
 
-- protos
+- prototypes
  - title
  - catch_copy
  - concept
@@ -59,20 +59,20 @@
 
 - images
  - image
- - proto_id
+ - prototype_id
 
 - comments
- - comment
+ - text
  - user_id
- - proto_id
+ - prototype_id
 
 - tags
  - tag
 
 - likes
  - user_id
- - proto_id
+ - prototype_id
 
-- proto_tag
- - proto_id
+- tags_prototypes
+ - prototype_id
  - tag_id
