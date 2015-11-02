@@ -1,4 +1,8 @@
 class PrototypesController < ApplicationController
+  def index
+    @prototypes = Prototype.order("likes_count DESC")
+  end
+
   def new
     @prototype = Prototype.new
     @prototype.images.build
@@ -35,6 +39,10 @@ class PrototypesController < ApplicationController
     redirect_to :root
   end
 
+  def newest
+    @prototypes = Prototype.order("created_at DESC")
+    render action:'index'
+  end
 
   private
 
