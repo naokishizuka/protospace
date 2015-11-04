@@ -49,5 +49,6 @@ group :development do
   gem 'carrierwave'
   gem 'rmagick'
   gem 'pry'
+  gem 'acts-as-taggable-on', '~> 3.4'
 end
 
