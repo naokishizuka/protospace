@@ -1,9 +1,9 @@
 .col-sm-4.col-md-3.proto-content
   -if user_signed_in? && current_user.id == prototype.user.id
     .dropdown.drop_menu_location
-      %button{data: {toggle: "dropdown"}, id: "dropdownMenu", type: "button"}
+      %button.btn.btn-default.dropdown-toggle#dropdownMenu{ type: "button", data: { toggle: "dropdown" } }
         Action
-      %ul{aria: {labelledby: "dropdownMenu1"}, class: "dropdown-menu"}
+      %ul.dropdown-menu{ aria: { labelledby: "dropdownMenu1" } }
         %li
           = link_to "Delete", prototype_path(prototype), method: :delete, rel: "nofollow", data:{ method: "delete"}
         %li
@@ -17,7 +17,6 @@
         .proto-date
           = prototype.created_at
       %ul.proto-tag-list.list-inline
-        %li
-          %a{href: "#", class: "btn btn-default"} iPad
-        %li
-          %a{href: "#", class: "btn btn-default"} wireframe
+        - prototype.tag_list.each do |tag|
+          %li
+            = link_to tag, tag_path(tag), class: "btn btn-default"

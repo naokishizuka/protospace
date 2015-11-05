@@ -288,7 +288,15 @@ body {
 
 }
 
+.drop_menu_location{
+  position: absolute;
+  top: 10px;
+  left: 20px;
+}
+
 .proto-content {
+  position: relative;
+
   .thumbnail {
     border-radius: 0;
     padding: 0;
