@@ -426,6 +426,11 @@ body {
     height: 500px;
     position: relative;
     margin-bottom: 20px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
     
     input {
       position: absolute;
@@ -438,6 +443,16 @@ body {
       filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
       cursor: pointer;
     }
+  }
+
+  .hide_form{
+    display: none;
+  }
+
+  #sub_1, #sub_2, #sub_3{
+    height: 100%;
+    width: 100%;
+    border-style: none;
   }
   
   .list-group-item {
