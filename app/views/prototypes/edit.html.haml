@@ -9,20 +9,26 @@
           .cover-image-upload
             = f.fields_for :images, @prototype.images.main do |image|
               = image.file_field :image
+              = image_tag (@prototype.images.main.first.image), {id: "main_preview"}
               = image.hidden_field :status, value: 'main'
         .col-md-12
           %ul.proto-sub-list.list-group
-            %li.list-group-item.col-md-4
+            %li.list-group-item.col-md-4.hide_form
               .image-upload
                 = f.fields_for :images, @prototype.images.sub.first do |image|
                   = image.file_field :image
                   = image.hidden_field :status, value: 'sub'
-            %li.list-group-item.col-md-4
+            %li.list-group-item.col-md-4.hide_form
               .image-upload
                 = f.fields_for :images, @prototype.images.sub.last do |image|
                   = image.file_field :image
                   = image.hidden_field :status, value: 'sub'
-            %li.list-group-item.col-md-4
+            %li.list-group-item.col-md-4.hide_form
+              .image-upload
+                = f.fields_for :images, @prototype.images.sub.last do |image|
+                  = image.file_field :image
+                  = image.hidden_field :status, value: 'sub'
+            %li.list-group-item.col-md-4#add_new_form
               .image-upload-plus
                 %span +
       .row.proto-description
