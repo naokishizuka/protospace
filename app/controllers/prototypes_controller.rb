@@ -4,8 +4,12 @@ class PrototypesController < ApplicationController
   end
 
   def new
-    @prototype = Prototype.new
-    @prototype.images.build
+    if user_signed_in?
+      @prototype = Prototype.new
+      @prototype.images.build
+    else
+      redirect_to :root
+    end
   end
 
   def create

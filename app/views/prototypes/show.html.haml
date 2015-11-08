@@ -10,7 +10,7 @@
           .proto-user
             = link_to "by #{@prototype.user.user_name}", user_path(@prototype.user)
             %span.degree
-              = current_user.member
+              = @prototype.user.member
     .col-md-6.text-right
       #like-button
         = render partial: 'likes/like'
