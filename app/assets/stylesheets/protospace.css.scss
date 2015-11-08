@@ -622,4 +622,16 @@ body {
   }
 }
 
+ .tags-list{
+    ul{
+      li{
+        list-style: none;
+        a{
+          text-align: left;
+          display: block;
+          padding: 20px;
+        }
+      }
+    }
+ }
 
