@@ -1,4 +1,4 @@
-$(window).load(function(){
+$(document).ready(function(){
   $("#user_avatar").change(function(){
     if(!this.files.length){
       return;
