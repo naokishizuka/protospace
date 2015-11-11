@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(function(){
   add_main_image();
   add_new_form();
   add_sub_image();
