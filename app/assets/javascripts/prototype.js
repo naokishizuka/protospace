@@ -1,4 +1,4 @@
-$(window).load(function(){
+$(function(){
   add_main_image();
   add_new_form();
   add_sub_image();
@@ -13,6 +13,7 @@ function add_main_image(){
     var fr = new FileReader();
     fr.onload = function(){
       $("#main_preview").attr('src', fr.result );
+      $("#main_preview").css('display', 'block')
     }
     fr.readAsDataURL(file);
   });
@@ -28,7 +29,8 @@ function add_sub_image(){
       var file = $(this).prop('files')[0];
       var fr = new FileReader();
       fr.onload = function(){
-        $("#sub_" + num).attr('src', fr.result );
+        $("#sub_" + num).attr('src', fr.result);
+        $("#sub_" + num).css('display', 'block');
       }
       fr.readAsDataURL(file);
 

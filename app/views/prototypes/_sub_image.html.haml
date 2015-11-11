@@ -1,2 +1,3 @@
-%li.list-group-item
-  = image_tag( sub_image.image, class: 'img-responsive')
+- unless sub_image.image.blank?
+  %li.list-group-item
+    = image_tag( sub_image.image, class: 'img-responsive')

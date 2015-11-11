@@ -1,7 +1,9 @@
 class CommentsController < ApplicationController
   def create
-    Comment.create(create_params)
-    @comments = Comment.where(prototype_id: create_params[:prototype_id])
+    if user_signed_in?
+      Comment.create(create_params)
+      @comments = Comment.where(prototype_id: create_params[:prototype_id])
+    end
   end
 
   def create_params

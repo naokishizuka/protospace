@@ -1,4 +1,8 @@
-$(window).load(function(){
+$(function(){
+  avatar_change();
+});
+
+function avatar_change(){
   $("#user_avatar").change(function(){
     if(!this.files.length){
       return;
@@ -10,5 +14,4 @@ $(window).load(function(){
     }
     fr.readAsDataURL(file);
   });
-});
-
+}

@@ -1,11 +1,15 @@
 class PrototypesController < ApplicationController
   def index
-    @prototypes = Prototype.order(likes_count: :DESC)
+    @prototypes = Prototype.order(likes_count: :DESC).page(params[:page]).per(8)
   end
 
   def new
-    @prototype = Prototype.new
-    @prototype.images.build
+    if user_signed_in?
+      @prototype = Prototype.new
+      @prototype.images.build
+    else
+      redirect_to :root
+    end
   end
 
   def create
@@ -40,7 +44,7 @@ class PrototypesController < ApplicationController
   end
 
   def newest
-    @prototypes = Prototype.order(created_at: :DESC)
+    @prototypes = Prototype.order(created_at: :DESC).page(params[:page]).per(8)
     render action: :index
   end
 

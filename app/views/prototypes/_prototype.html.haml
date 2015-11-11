@@ -7,15 +7,17 @@
         %li
           = link_to "Delete", prototype_path(prototype), method: :delete, rel: "nofollow", data:{ method: "delete"}
         %li
-          = link_to "Edit", edit_prototype_path(prototype), data: { no_turbolink: true }
+          = link_to "Edit", edit_prototype_path(prototype)
   .thumbnail
     = link_to image_tag(prototype.images.main.first.image), prototype_path(prototype.id)
     .caption
       %h3
         = prototype.title
       .proto-meta
+        .proto-user
+          = link_to "by #{prototype.user.user_name}", user_path(prototype.user)
         .proto-date
-          = prototype.created_at
+          = prototype.created_at.strftime('%b %d')
       %ul.proto-tag-list.list-inline
         - prototype.tag_list.each do |tag|
           %li
