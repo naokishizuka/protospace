@@ -1,4 +1,5 @@
 class PrototypesController < ApplicationController
+
   def index
     @prototypes = Prototype.order(likes_count: :DESC).page(params[:page]).per(8)
   end
@@ -25,9 +26,7 @@ class PrototypesController < ApplicationController
 
   def destroy
     prototype = Prototype.find(params[:id])
-    if prototype.user.id == current_user.id
-      prototype.destroy
-    end
+    prototype.destroy if prototype.user.id == current_user.id
     redirect_to :root
   end
 
@@ -37,9 +36,7 @@ class PrototypesController < ApplicationController
 
   def update
     prototype = Prototype.find(params[:id])
-    if prototype.user.id == current_user.id
-      prototype.update(prototype_params)
-    end
+    prototype.update(prototype_params) if prototype.user.id == current_user.id
     redirect_to :root
   end
 
@@ -53,4 +50,5 @@ class PrototypesController < ApplicationController
   def prototype_params
     params.require(:prototype).permit(:title, :catch_copy, :concept, :user_id, images_attributes:[:id, :image, :status]).merge(user_id: current_user.id, tag_list: params[:tags])
   end
+
 end
