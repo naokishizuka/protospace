@@ -1,8 +1,5 @@
 class PrototypesController < ApplicationController
 
-  before_action :set_instance_variable_prototype, only: [:show, :edit]
-  before_action :set_prototype, only: [:destroy, :update]
-
   def index
     @prototypes = Prototype.order(likes_count: :DESC).page(params[:page]).per(8)
   end
@@ -22,19 +19,23 @@ class PrototypesController < ApplicationController
   end
 
   def show
+    @prototype = Prototype.find(params[:id])
     @comment = Comment.new
     @comments = @prototype.comments
   end
 
   def destroy
+    prototype = Prototype.find(params[:id])
     prototype.destroy if prototype.user.id == current_user.id
     redirect_to :root
   end
 
   def edit
+    @prototype = Prototype.find(params[:id])
   end
 
   def update
+    prototype = Prototype.find(params[:id])
     prototype.update(prototype_params) if prototype.user.id == current_user.id
     redirect_to :root
   end
@@ -50,11 +51,4 @@ class PrototypesController < ApplicationController
     params.require(:prototype).permit(:title, :catch_copy, :concept, :user_id, images_attributes:[:id, :image, :status]).merge(user_id: current_user.id, tag_list: params[:tags])
   end
 
-  def set_instance_variable_prototype
-    @prototype = Prototype.find(params[:id])
-  end
-
-  def set_prototype
-    prototype = Prototype.find(params[:id])
-  end
 end
