@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
 
-  before_action :set_prototype, before: [:create, :destroy]
+  before_action :set_prototype, only: [:create, :destroy]
 
   def create
     current_user.likes.create(create_params)
