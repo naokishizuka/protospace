@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @prototypes = current_user.prototypes
+    @prototypes = current_user.prototypes.page(params[:page]).per(8)
   end
 
   def update

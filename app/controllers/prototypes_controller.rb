@@ -1,20 +1,18 @@
 class PrototypesController < ApplicationController
 
+  before_action :authenticate_user!, only: [:new]
+
   def index
     @prototypes = Prototype.order(likes_count: :DESC).page(params[:page]).per(8)
   end
 
   def new
-    if user_signed_in?
-      @prototype = Prototype.new
-      @prototype.images.build
-    else
-      redirect_to :root
-    end
+    @prototype = Prototype.new
+    @prototype.images.build
   end
 
   def create
-    Prototype.create(prototype_params)
+    current_user.prototypes.create(prototype_params)
     redirect_to :root
   end
 
@@ -48,7 +46,7 @@ class PrototypesController < ApplicationController
   private
 
   def prototype_params
-    params.require(:prototype).permit(:title, :catch_copy, :concept, :user_id, images_attributes:[:id, :image, :status]).merge(user_id: current_user.id, tag_list: params[:tags])
+    params.require(:prototype).permit(:title, :catch_copy, :concept, :user_id, images_attributes:[:id, :image, :status]).merge( tag_list: params[:tags])
   end
 
 end
