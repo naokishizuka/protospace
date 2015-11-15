@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  before_action :authenticate_user!, only: [:create]
+
   def create
       current_user.comments.create(create_params)
       @comments = Comment.where(prototype_id: create_params[:prototype_id])
